@@ -1,0 +1,199 @@
+/* dark little panel, one warm accent. feels more "player" than "settings". */
+
+* { box-sizing: border-box; }
+
+body {
+  width: 320px;
+  margin: 0;
+  padding: 12px 14px 14px;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: #16151a;
+  color: #ece9f1;
+  font-size: 14px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.logo {
+  font-size: 18px;
+  color: #e8a13d;
+}
+.top h1 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  flex: 1;
+  letter-spacing: -0.01em;
+}
+
+/* on/off switch */
+.switch { position: relative; width: 38px; height: 22px; }
+.switch input { display: none; }
+.slider {
+  position: absolute;
+  inset: 0;
+  background: #3a3842;
+  border-radius: 999px;
+  transition: background 0.15s;
+}
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 16px; height: 16px;
+  left: 3px; top: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.15s;
+}
+.switch input:checked + .slider { background: #e8a13d; }
+.switch input:checked + .slider::before { transform: translateX(16px); }
+
+.now {
+  background: #1f1d25;
+  border: 1px solid #2c2a33;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+}
+.now-site {
+  font-size: 12px;
+  color: #9b97a6;
+  word-break: break-all;
+}
+.now-scape {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 4px 0 2px;
+}
+.dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: #4a4752;
+  flex: none;
+}
+.dot.on {
+  background: #51d88a;
+  box-shadow: 0 0 0 3px rgba(81, 216, 138, 0.18);
+}
+.mood {
+  font-size: 11px;
+  font-weight: 400;
+  color: #8f8b9b;
+}
+.now-cat { font-size: 12px; color: #9b97a6; }
+.now-cat b { color: #e8a13d; }
+
+.blocked {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #f0a868;
+}
+
+.ctrl { margin-bottom: 11px; }
+.ctrl > label {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #8f8b9b;
+  margin-bottom: 4px;
+}
+.ctrl.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* the "pause when site plays" checkbox - normal case, not the label caps */
+.ctrl > label.check {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  text-transform: none;
+  letter-spacing: 0;
+  color: #c8c4d2;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+.ctrl > label.check input { accent-color: #e8a13d; }
+
+select {
+  width: 100%;
+  font: inherit;
+  background: #211f28;
+  color: #ece9f1;
+  border: 1px solid #34313c;
+  border-radius: 6px;
+  padding: 7px 8px;
+}
+
+input[type="range"] {
+  flex: 1;
+  accent-color: #e8a13d;
+}
+
+/* your-own-music row: text box + a small play button */
+.row2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+input[type="text"] {
+  flex: 1;
+  font: inherit;
+  background: #211f28;
+  color: #ece9f1;
+  border: 1px solid #34313c;
+  border-radius: 6px;
+  padding: 7px 8px;
+}
+input[type="text"]::placeholder { color: #6f6b7b; }
+.iconbtn {
+  background: none;
+  border: none;
+  font-size: 17px;
+  cursor: pointer;
+  padding: 0;
+}
+.iconbtn.muted { opacity: 0.45; }
+
+.linkbtn {
+  background: none;
+  border: none;
+  color: #e8a13d;
+  cursor: pointer;
+  text-decoration: underline;
+  font: inherit;
+  padding: 0;
+}
+
+.list summary {
+  cursor: pointer;
+  font-size: 12px;
+  color: #9b97a6;
+  padding: 4px 0;
+}
+.list ul {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  max-height: 150px;
+  overflow-y: auto;
+}
+.list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 2px;
+  font-size: 13px;
+  border-bottom: 1px solid #232129;
+}
+.list li .m { color: #807c8b; font-size: 11px; }
+.list li.playing { color: #51d88a; }

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="popup.css" />
+    <title>Soundfly</title>
+  </head>
+  <body>
+    <header class="top">
+      <span class="logo">♫</span>
+      <h1>Soundfly</h1>
+      <label class="switch" title="turn the soundtrack on/off">
+        <input type="checkbox" id="enabled" />
+        <span class="slider"></span>
+      </label>
+    </header>
+
+    <!-- what's playing for this site -->
+    <section class="now">
+      <div class="now-site" id="site">…</div>
+      <div class="now-scape">
+        <span class="dot" id="dot"></span>
+        <span id="scapename">—</span>
+        <span class="mood" id="mood"></span>
+      </div>
+      <div class="now-cat">detected as <b id="cat">…</b></div>
+      <div class="blocked" id="blocked" hidden>
+        browser blocked autoplay — <button id="start" class="linkbtn">click to start</button>
+      </div>
+    </section>
+
+    <!-- per-domain override -->
+    <section class="ctrl">
+      <label for="override">soundtrack for this site</label>
+      <select id="override"></select>
+    </section>
+
+    <!-- your own music: paste any stream url -->
+    <section class="ctrl" id="customrow" hidden>
+      <label for="customurl">your music — paste a stream link</label>
+      <div class="row2">
+        <input type="text" id="customurl" placeholder="https://…/stream.mp3" />
+        <button id="customsave" class="iconbtn" title="play this">▶</button>
+      </div>
+    </section>
+
+    <section class="ctrl row">
+      <button id="mute" class="iconbtn" title="mute">🔊</button>
+      <input type="range" id="volume" min="0" max="100" value="50" />
+    </section>
+
+    <section class="ctrl">
+      <label class="check">
+        <input type="checkbox" id="duck" />
+        pause when the site plays its own sound
+      </label>
+    </section>
+
+    <details class="list">
+      <summary>all soundscapes</summary>
+      <ul id="scapelist"></ul>
+    </details>
+
+    <script src="soundscapes.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
